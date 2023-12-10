@@ -2,7 +2,6 @@ package TesteTecnicoAPI.Testes;
 
 import TesteTecnicoAPI.Dados.MapDados;
 import TesteTecnicoAPI.Utils.BaseURL;
-import TesteTecnicoAPI.Utils.GeradorDados;
 import org.apache.http.HttpStatus;
 import org.junit.Test;
 
@@ -14,7 +13,6 @@ import static org.hamcrest.Matchers.*;
 
 public class AdicionarProdutosTest extends BaseURL {
     MapDados objeto = new MapDados();
-    GeradorDados dados = new GeradorDados();
 
     @Test
     public void validarCodigoSucessoInserirProduto() {
