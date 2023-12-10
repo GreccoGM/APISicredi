@@ -3,20 +3,20 @@ Teste API Produtos
 Este é o projeto de Teste de API com testes automatizados.
 
 Contem os testes:
-- Consultar Usuarios:
+- Consultar Usuarios ("/users"):
     * Validação de sucesso de chamada da requisição
     * Validação dos tipos e atributos retornados
     * Validação do tipo de imagem retornada
     * Validação de retorno valido para os atributos "name" e "password"
-- Consultar Produto/id
+- Consultar Produto/id ("/products/id""): 
     * Validação de sucesso de chamada da requisição
     * Validação dos tipos e atributos retornados
     * Validação da consulta com produto inexistente
-- Consultar Produtos
+- Consultar Produtos ("/products"):
     * Validação de sucesso de chamada da requisição
     * Validação do tipo do atributo "image"
     * Validação de total retornado por pagina
-- Consultar Produtos Autorizador
+- Consultar Produtos Autorizador ("/auth/products"):
     * Validação de sucesso de chamada da requisição
     * Validação dos tipos e atributos retornados
       - Atributo "rating" não esta com o tipo correto
@@ -24,9 +24,12 @@ Contem os testes:
     * Validar consulta com token invalido
       - Campo "name" não retorna o texto correto
       - Campo "message" não retorna o texto correto
-- Autenticar Usuario
+- Autenticar Usuario ("/auth/login"):
     * Validação dos tipos dos atributos retornados
-- Adicionar Produtos
+    * Validar retorno com dados de usuario inexistente
+    * Validar retorno com dados de usuario vazio
+    * Validar email retornado
+- Adicionar Produtos ("/products/add"):
     * Validação de sucesso de chamada da requisição
       - Não retorna o status code correto
     * Validação de envio de requisição com atributos vazios
@@ -35,6 +38,8 @@ Contem os testes:
       - Não envia o atributo "discountPercentage"
     * Validação do corpo de envio da requisição
       - Não envia o atributo "discountPercentage"
+    * Validar incremento de ID
+      - Não incrementa ID de produto. Registrando dois produtos com o mesmo ID.
 
 ##  Tecnologias e Ferramentas
 * Java 1.8.0

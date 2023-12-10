@@ -40,6 +40,15 @@ public class MapDados  extends GeradorDados{
         return objLogin;
     }
 
+    public Map autenticarUsuarioInvalido(){
+        Map objLogin = estruturaAutenticacao();
+
+        objLogin.put("username","teste");
+        objLogin.put("password", "123456");
+
+        return objLogin;
+    }
+
     public Map produto(){
         Map objProduto = estruturaAdcProduto();
 

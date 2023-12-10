@@ -35,7 +35,7 @@ public class DadosRetornados extends BaseURL {
         return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoia21pbmNoZWxsZSIsImVtYWlsIjoia21pbmNoZWxsZUBxcS5jb20iLCJmaXJzdE5hbWUiOiJKZWFubmUiLCJsYXN0TmFtZSI6IkhhbHZvcnNvbiIsImdlbmRlciI6ImZlbWFsZSIsImltYWdlIjoiaHR0cHM6Ly9yb2JvaGFzaC5vcmcvYXV0cXVpYXV0LnBuZyIsImlhdCI6MTcwMTk2MDU2OSwiZXhwIjoxNzAxOTY0MTY5fQ.NbHbNtaJ3rHuZvvy5alugkVPhAKOu2ubOgj4VZhipEY";
     }
 
-    public int capturarIdProduto(){
+    public int capturarIdProdutos(){
         Random randomico = new Random();
         int idCapturado = 0;
         List<Integer> prodIds =
@@ -57,5 +57,22 @@ public class DadosRetornados extends BaseURL {
             }
 
         return idCapturado;
+    }
+
+    public int capturarUltimoIdCadastrado(){
+        Map objetos = objeto.produto();
+
+        int ultimoId =
+                given()
+                        .spec(reqSpec)
+                        .body(objetos)
+                .when()
+                        .post("/products/add")
+                .then()
+                        .spec(resSpec)
+                        .body(notNullValue())
+                        .extract().path("id")
+                ;
+        return ultimoId;
     }
 }

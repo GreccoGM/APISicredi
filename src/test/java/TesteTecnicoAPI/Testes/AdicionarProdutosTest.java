@@ -1,5 +1,6 @@
 package TesteTecnicoAPI.Testes;
 
+import TesteTecnicoAPI.Dados.DadosRetornados;
 import TesteTecnicoAPI.Dados.MapDados;
 import TesteTecnicoAPI.Utils.BaseURL;
 import org.apache.http.HttpStatus;
@@ -9,10 +10,12 @@ import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 public class AdicionarProdutosTest extends BaseURL {
     MapDados objeto = new MapDados();
+    DadosRetornados dadosRetorno = new DadosRetornados();
 
     @Test
     public void validarCodigoSucessoInserirProduto() {
@@ -41,6 +44,7 @@ public class AdicionarProdutosTest extends BaseURL {
         .then()
                 .spec(resSpec)
                 .statusCode(HttpStatus.SC_BAD_REQUEST) // erro status
+                .body("message", is(notNullValue()))
         ;
     }
 
@@ -104,6 +108,24 @@ public class AdicionarProdutosTest extends BaseURL {
         ;
     }
 
-    //validar incremento do id
-    //extrair do total
+    @Test
+    public void validarIncrementoID() {
+        Map objetos = objeto.produto();
+        int idCapturado = dadosRetorno.capturarUltimoIdCadastrado();
+
+        int idRegistrado =
+        given()
+                .spec(reqSpec)
+                .body(objetos)
+        .when()
+                .post("/products/add")
+        .then()
+                .spec(resSpec)
+                .body(notNullValue())
+                .extract().path("id")
+        ;
+
+        assertThat(idRegistrado,  is(idCapturado + 1));
+    }
+
 }
