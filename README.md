@@ -1,6 +1,5 @@
 # APISicredi
-Teste API Produtos
-Este é o projeto de Teste de API com testes automatizados.
+Teste API Produtos com testes automatizados.
 
 Contem os testes:
 - Consultar Usuarios ("/users"):
