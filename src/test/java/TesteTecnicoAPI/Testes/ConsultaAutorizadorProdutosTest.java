@@ -1,6 +1,6 @@
 package TesteTecnicoAPI.Testes;
 
-import TesteTecnicoAPI.Utils.Autenticacao;
+import TesteTecnicoAPI.Dados.DadosRetornados;
 import TesteTecnicoAPI.Utils.BaseURL;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.ValidatableResponse;
@@ -13,8 +13,8 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-public class ConsultarProdutos extends BaseURL {
-    Autenticacao auth = new Autenticacao();
+public class ConsultaAutorizadorProdutosTest extends BaseURL {
+    DadosRetornados auth = new DadosRetornados();
 
     @Test
     public void validarSucessoConsultaProdutos() {

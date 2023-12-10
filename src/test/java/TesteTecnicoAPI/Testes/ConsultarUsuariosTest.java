@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
 
-public class ConsultarUsuarios extends BaseURL {
+public class ConsultarUsuariosTest extends BaseURL {
     @Test
     public void validarSucessoConsultarUsuarios() {
         given()

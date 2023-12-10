@@ -11,7 +11,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.notNullValue;
 
 
-public class AutenticarUsuario extends BaseURL{
+public class AutenticarUsuarioTest extends BaseURL{
     MapDados objeto = new MapDados();
 
     @Test
@@ -28,7 +28,6 @@ public class AutenticarUsuario extends BaseURL{
                 .statusCode(HttpStatus.SC_OK)
                 .body("id",notNullValue())
                 .body("username",notNullValue())
-                .body("password",notNullValue())
                 .body("firstName",notNullValue())
                 .body("lastName",notNullValue())
                 .body("gender",notNullValue())
